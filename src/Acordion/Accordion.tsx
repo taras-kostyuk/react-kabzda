@@ -2,16 +2,19 @@
 
 type AccordionPropsType ={
     titleValue:string
-    collapsed:boolean
+
+    onClick:(value:boolean) => void
+    value:boolean
+
 }
-type titleValuePropsType ={
+type AccordionTitlePropsType ={
     title:string
+    onClick:(value:boolean) => void
+    value:boolean
 }
 
 
 export  function Accordion (props:AccordionPropsType) {
-
-
 
 /*    if (props.collapsed === true){
         return(
@@ -21,15 +24,15 @@ export  function Accordion (props:AccordionPropsType) {
         )
     }*/
 return <div>
-   <AccordionTitle title={props.titleValue}/>
+   <AccordionTitle value={props.value} onClick={props.onClick} title={props.titleValue}/>
 
-    {!props.collapsed && <AccordionBody/>}
+  {props.value && <AccordionBody/>}
  {/*якщо не collapsed то покажи <AccordionBody/>*/}
 </div>
 
 }
-function AccordionTitle (props:titleValuePropsType) {
-    return  <h3>---{props.title}---</h3>
+function AccordionTitle (props:AccordionTitlePropsType) {
+    return  <h3 onClick={() => {props.onClick(!props.value)}}>---{props.title}---</h3>
 }
 function AccordionBody() {
     return <div>
