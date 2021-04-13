@@ -10,17 +10,17 @@ import {UnControlledOnOff} from "./OnOff/UncontroledOnOff";
 function App() {
 
     let [ratingValue, setRatingValue] = useState<RatingValueType>(1)
-    let [collapsed, setCollapsed] = useState(false)
-    let [on,setOn] = useState(true)
+    let [collapsed, setCollapsed] = useState<boolean>(false)
+    let [on,setOn] = useState<boolean>(true)
     return (
         <div className={"App"}>
-            <UnControlledOnOff/>
             <OnOff on={on} setOn={setOn}/>
 
             <UnControlAccordion titleValue={"MENU"}/>
-            <Accordion titleValue={"Menu2"} value={collapsed} onClick={setCollapsed} />
+            <Accordion titleValue={"Menu2"} collapsed={collapsed} onClick={() => {setCollapsed(!collapsed)}} />
             <Rating value={ratingValue} onClick={setRatingValue}/>
             <UnControlRating/>
+            <UnControlledOnOff onChange={setOn}/> {on.toString()}
 
         </div>
     );
