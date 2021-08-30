@@ -69,20 +69,13 @@ const newArray = useMemo(() => {
 const addUser = () => {
         const newUsers = [...users, 'Sveta' + new Date().getTime()]
     setUsers(newUsers)
-
 }
-
-
         return<>
             <button onClick={() => setCounter(counter +1)}>+</button>
             <button onClick={() => addUser()}>addUser</button>
             {counter}
             <Users users={newArray} />
-        </>
-
-
-
-}
+        </>}
 
 export const LikeUseCallback = () => {
     console.log('LikeUseCallback')
@@ -112,29 +105,12 @@ export const LikeUseCallback = () => {
 
     },[books])
 
-
-    /*
-        const addBook = () => {
-            const newUsers = [...books, 'Angular' + new Date().getTime()]
-            setBooks(newUsers)
-
-        }
-    */
-
-
     return<>
         <button onClick={() => setCounter(counter +1)}>+</button>
 
         {counter}
         <Book addBook={memoizedAddBook}/>
-    </>
-
-
-
-}
-
-
-
+    </>}
 const BooksSecrets =(props:{ addBook:() => void}) => {
     console.log('BOOKS-SECRET')
 
