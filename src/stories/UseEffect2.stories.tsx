@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useState} from "react";
 
 export default {
-    title:'useEffect demo',
+    title:'useEffect demo 2',
 }
 
 
@@ -21,16 +21,7 @@ useEffect(() => {
     //document.getElementById
     //document.title = "User";
 })
-    useEffect(() => {
-        console.log('useEffect only first render (component DidMount)')
-        document.title = counter.toString()
 
-    },[])
-    useEffect(() => {
-        console.log('useEffect first render and every counter change')
-        document.title = counter.toString()
-
-    },[counter])
 
     return<>
         Hello  {counter} {fake}
@@ -38,6 +29,30 @@ useEffect(() => {
         <button onClick={() => setFake(fake +1)}>fake+</button>
 
         <button onClick={() => setCounter(counter +1)}>counter +</button>
+    </>
+}
+
+
+
+export const SetTimeoutExample = () => {
+    console.log('SetTimeoutExample')
+
+    const [counter,setCounter] = useState<number>(1)
+
+
+    useEffect(() => {
+        setInterval(() => {
+            console.log("setTimeout")
+           setCounter(state => state +1)
+        }, 1000)
+
+    }, [])
+
+
+
+    return<>
+        Hello  counter : {counter}
+
     </>
 }
 
